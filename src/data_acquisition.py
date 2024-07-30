@@ -1,9 +1,10 @@
+"""Fetches Pokémon data from the provided API URL and returns a DataFrame."""
+
 import requests
 import pandas as pd
 
-def fetch_pokemon_data(api_url: str) -> pd.DataFrame:
-    """Fetches Pokémon data from the provided API URL and returns a DataFrame."""
-    response = requests.get(api_url)
+def fetch_pokemon_data(api_url: str):
+    response = requests.get(api_url, timeout=10)
     response.raise_for_status()
     data = response.json()
     
@@ -15,5 +16,5 @@ def fetch_pokemon_data(api_url: str) -> pd.DataFrame:
 
 if __name__ == "__main__":
     API_URL = "https://pokeapi.co/api/v2/pokemon?limit=100"
-    df = fetch_pokemon_data(API_URL)
-    df.to_csv("data/pokemon_data.csv", index=False)
+    df_inner = fetch_pokemon_data(API_URL)
+    df_inner.to_csv("data/pokemon_data.csv", index=False)
