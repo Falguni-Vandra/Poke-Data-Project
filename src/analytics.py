@@ -1,8 +1,8 @@
-import pandas as pd
+"""Load data from SQLite and perform basic analytics."""
+
 from pyspark.sql import SparkSession
 
 def perform_analytics():
-    """Load data from SQLite and perform basic analytics."""
     # Start Spark session
     spark = SparkSession.builder.appName('PokemonAnalytics').getOrCreate()
 
