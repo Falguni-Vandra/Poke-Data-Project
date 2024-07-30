@@ -1,16 +1,12 @@
-from sqlalchemy import create_engine
+import sqlite3
 import pandas as pd
 
-def create_sqlite_engine(db_file='pokemon_data.db'):
-    return create_engine(f'sqlite:///{db_file}')
+def store_data_to_sqlite(df: pd.DataFrame, db_path: str) -> None:
+    """Stores DataFrame into SQLite database."""
+    conn = sqlite3.connect(db_path)
+    df.to_sql('pokemon', conn, if_exists='replace', index=False)
+    conn.close()
 
-def store_data_to_sqlite(df, table_name, db_file='pokemon_data.db'):
-    engine = create_sqlite_engine(db_file)
-    df.to_sql(table_name, con=engine, if_exists='replace', index=False)
-
-def main():
-    df = pd.read_csv('data/pokemon_data.csv')
-    store_data_to_sqlite(df, 'pokemon')
-
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    df = pd.read_csv("data/cleaned_pokemon_data.csv")
+    store_data_to_sqlite(df, "pokemon_data.db")

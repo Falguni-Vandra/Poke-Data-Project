@@ -1,19 +1,19 @@
 import requests
 import pandas as pd
 
-def fetch_pokemon_data(url):
-    response = requests.get(url)
+def fetch_pokemon_data(api_url: str) -> pd.DataFrame:
+    """Fetches Pokémon data from the provided API URL and returns a DataFrame."""
+    response = requests.get(api_url)
     response.raise_for_status()
-    return response.json()
+    data = response.json()
+    
+    # Extract relevant fields
+    pokemon_list = data.get('results', [])
+    df = pd.DataFrame(pokemon_list)
+    
+    return df
 
-def save_data_to_csv(data, filename):
-    df = pd.json_normalize(data)
-    df.to_csv(filename, index=False)
-
-def main():
-    url = 'https://pokeapi.co/api/v2/pokemon?limit=100'
-    data = fetch_pokemon_data(url)
-    save_data_to_csv(data['results'], 'data/pokemon_data.csv')
-
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    API_URL = "https://pokeapi.co/api/v2/pokemon?limit=100"
+    df = fetch_pokemon_data(API_URL)
+    df.to_csv("data/pokemon_data.csv", index=False)

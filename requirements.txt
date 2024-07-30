@@ -3,3 +3,5 @@ pandas
 pyspark
 sqlalchemy
 psycopg2-binary
+sqlite3
+pytest

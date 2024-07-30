@@ -1,38 +1,53 @@
-# Pokemon Data Processing Project
+# Pokémon Data Project
 
-## Overview
-
-This project involves fetching data from the Pokémon API, processing it using Apache Spark on Databricks, and storing it in a XYZ database. The project is structured to work within the Azure free tier, using Databricks for data processing and XYZ for local storage.
+This project involves fetching, processing, storing, and analyzing Pokémon data.
 
 ## Project Structure
 
-pokemon_project/
-├── data/
-│ └── (store downloaded data here)
-├── notebooks/
-│ └── (store Databricks notebooks here)
-├── src/
-│ ├── init.py
-│ ├── data_acquisition.py
-│ ├── data_processing.py
-│ ├── storage.py
-│ └── analytics.py
-├── requirements.txt
-└── README.md
+- `src/`: Contains source code for data acquisition, processing, storage, and analytics.
+- `data/`: Contains raw and cleaned data files.
+- `tests/`: Contains unit tests for the project.
 
 ## Setup
 
-### Prerequisites
+1. **Create a virtual environment and install dependencies:**
+
+    ```bash
+    python -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+    ```
+
+2. **Fetch and Clean Data:**
+
+    ```bash
+    python src/data_acquisition.py
+    python src/data_processing.py
+    ```
+
+3. **Store Data:**
+
+    ```bash
+    python src/storage.py
+    ```
+
+4. **Perform Analytics:**
+
+    ```bash
+    python src/analytics.py
+    ```
+
+5. **Run Tests:**
+
+    ```bash
+    pytest
+    ```
+
+## Requirements
 
 - Python 3.x
-- Virtual Environment (recommended)
-- VSCode (optional, for development)
-
-# Create and Activate Virtual Environment
-
-python -m venv venv
-source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-
-# Install Dependencies
-
-pip install -r requirements.txt
+- `requests`
+- `pandas`
+- `sqlite3`
+- `pyspark`
+- `pytest`
