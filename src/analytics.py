@@ -19,3 +19,11 @@ def perform_analytics():
 
 if __name__ == '__main__':
     perform_analytics()
+
+# more analytics
+# change storage mongoDB & postgres
+# parellel process data
+# create nested folder for each file
+# build classes & objects
+# setup file
+# build poke Lib and package it in wheel file
