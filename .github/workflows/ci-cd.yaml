@@ -33,4 +33,4 @@ jobs:
 
       - name: Lint code
         run: |
-          pylint src tests
+          pylint src tests --fail-under=8
