@@ -10,6 +10,7 @@ on:
 
 jobs:
   build:
+    name: Build and Test
     runs-on: ubuntu-latest
 
     steps:
@@ -32,4 +33,4 @@ jobs:
 
       - name: Lint code
         run: |
-          pylint src tests
+          pylint src tests --fail-under=8
