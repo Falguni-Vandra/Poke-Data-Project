@@ -12,5 +12,3 @@ class DataProcessor:
         # Example processing
         self.df['name'] = self.df['name'].str.title()
         return self.df
-
-# Need to build more on this script
