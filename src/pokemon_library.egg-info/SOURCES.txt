@@ -1,0 +1,9 @@
+README.md
+pyproject.toml
+setup.py
+src/pokemon_library.egg-info/PKG-INFO
+src/pokemon_library.egg-info/SOURCES.txt
+src/pokemon_library.egg-info/dependency_links.txt
+src/pokemon_library.egg-info/entry_points.txt
+src/pokemon_library.egg-info/requires.txt
+src/pokemon_library.egg-info/top_level.txt

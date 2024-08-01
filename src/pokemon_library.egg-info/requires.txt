@@ -1,8 +1,8 @@
-requests
 pandas
+requests
+pytest
+pylint
 pyspark
 sqlalchemy
 psycopg2-binary
-pytest
-pylint
 pymongo
