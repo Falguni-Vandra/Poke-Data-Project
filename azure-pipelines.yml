@@ -1,0 +1,35 @@
+# Trigger the pipeline on pushes and pull requests to the master branch
+trigger:
+- master
+
+# Define the virtual machine image for the build agent
+pool:
+  vmImage: 'ubuntu-latest'
+
+# Define the pipeline steps
+steps:
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.11'
+  displayName: 'Set up Python'
+
+- script: |
+    python -m pip install --upgrade pip
+    pip install -r requirements.txt
+  displayName: 'Install dependencies'
+
+- script: |
+    pytest
+  displayName: 'Run tests'
+
+- script: |
+    pylint src tests --fail-under=8
+  displayName: 'Lint code'
+
+# Define the jobs if needed
+jobs:
+- job: BuildAndTest
+  displayName: 'Build and Test'
+  steps:
+  - script: echo Build and Test job
+    displayName: 'Echo Build and Test'
