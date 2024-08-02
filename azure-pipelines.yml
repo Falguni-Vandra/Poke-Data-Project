@@ -6,7 +6,7 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-# Define the pipeline steps
+# Define the pipeline steps directly
 steps:
 - task: UsePythonVersion@0
   inputs:
@@ -25,11 +25,3 @@ steps:
 - script: |
     pylint src tests --fail-under=8
   displayName: 'Lint code'
-
-# Define the jobs if needed
-jobs:
-- job: BuildAndTest
-  displayName: 'Build and Test'
-  steps:
-  - script: echo Build and Test job
-    displayName: 'Echo Build and Test'
