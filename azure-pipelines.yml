@@ -6,7 +6,6 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-# Define the pipeline steps directly
 steps:
 - task: UsePythonVersion@0
   inputs:
